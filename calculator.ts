@@ -8,7 +8,14 @@ export function add(numbers: string): number {
       numbers = numbers.substring(delimiterIndex + 1);
     }
 
-    const nums = numbers.split(delimiter).map((num) => parseInt(num, 10));
+    const nums = numbers.split(delimiter).map((num) => {
+        const parsedNum = parseInt(num, 10);
+        if (isNaN(parsedNum)) {
+            throw new Error(`invalid input: ${num}`);
+          }
+          return parsedNum;      
+    });
+
     const negatives = nums.filter((num) => num < 0);
 
     if (negatives.length > 0) {
