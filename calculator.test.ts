@@ -20,3 +20,11 @@ test('returns the sum of any amount of numbers', () => {
 test('handles new lines between numbers', () => {
     expect(add('1\n2,3')).toBe(6);
 });  
+
+test('supports custom delimiters 1', () => {
+    expect(add('//;\n1;2')).toBe(3);
+});
+
+test('supports custom delimiters 2', () => {
+    expect(add('//#\n5#2#9#4#5\n7')).toBe(25);
+});
